@@ -5,9 +5,19 @@
   (:require [compojure.handler :as handler]
             [compojure.route :as route]))
 
+(defn json-response [data & [status]]
+  {:status (or status 200)
+   :headers {"Content-Type" "application/json"}
+   :body (json/generate-string data)})
+
 (defroutes app-routes
-  (GET "/" [] "Hello World")
-  (route/not-found "Not Found"))
+  (GET "/" []
+    (json-response {"hello" "world"}))
+
+  (PUT "/" [name]
+    (json-response {"hello" name})))
 
 (def app
   (handler/site app-routes))
+
+

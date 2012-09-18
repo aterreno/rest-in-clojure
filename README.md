@@ -14,6 +14,14 @@ To start a web server for the application, run:
 
     lein ring server
 
+## Testing 
+    lein test
+
+    curl -i -H "Accept: application/json" http://localhost:3000/ 
+    curl -i -H "Accept: application/json" -X PUT -d "name=toni" http://localhost:3000/
+
 ## License
 
-Copyright © 2012 TheArm
+Copyright © 2012 http://www.the-arm.com/
+
+
